@@ -3,6 +3,6 @@ class Strings {
   static const appTitle = 'App Name';
 
   // HomeScreen
-  static const homeScreenTitle = 'Home Screen';
-  static const homeScreenCenterText = 'Welcome to Flutterly!';
+  static const counterScreenTitle = 'counter Screen';
+  static const counterScreenText = 'Welcome to Flutterly!';
 }
