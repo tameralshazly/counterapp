@@ -1,7 +1,10 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 
+import 'package:counterapp/logic/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 /// the concept of the widget inspired
 /// from [Nikolay Kuchkarov](https://dribbble.com/shots/3368130-Stepper-Touch).
@@ -54,8 +57,8 @@ class _Stepper2State extends State<CounterSlider>
   Widget build(BuildContext context) {
     return FittedBox(
       child: SizedBox(
-        width: 280.0,
-        height: 120.0,
+        width: SizerUtil.deviceType == DeviceType.tablet ? 40.0.w : 55.0.w,
+        height: 12.0.h,
         child: Material(
           type: MaterialType.canvas,
           clipBehavior: Clip.antiAlias,
@@ -78,7 +81,9 @@ class _Stepper2State extends State<CounterSlider>
                 bottom: null,
                 child: Icon(
                   Icons.add,
-                  size: 40.0,
+                  size: SizerUtil.deviceType == DeviceType.tablet
+                      ? 7.0.w
+                      : 10.0.w,
                   color: Theme.of(context).iconTheme.color?.withOpacity(0.7),
                 ),
               ),
@@ -97,7 +102,9 @@ class _Stepper2State extends State<CounterSlider>
                       child: Center(
                         child: Icon(
                           Icons.trip_origin,
-                          size: 40.0,
+                          size: SizerUtil.deviceType == DeviceType.tablet
+                              ? 7.0.w
+                              : 10.0.w,
                           color: Theme.of(context)
                               .colorScheme
                               .secondary
@@ -135,9 +142,9 @@ class _Stepper2State extends State<CounterSlider>
     _controller.stop();
 
     if (_controller.value <= -0.20) {
-      // setState(() => isHor ? _value-- : _value++);
+      context.read<CounterCubit>().decrement();
     } else if (_controller.value >= 0.20) {
-      // setState(() => isHor ? _value++ : _value--);
+      context.read<CounterCubit>().increment();
     }
 
     final SpringDescription _kDefaultSpring =

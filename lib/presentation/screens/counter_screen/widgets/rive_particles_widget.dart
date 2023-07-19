@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
+import 'package:sizer/sizer.dart';
 
 import 'package:counterapp/core/themes/app_theme.dart';
 
@@ -50,13 +51,12 @@ class _PlayOneShotAnimationState extends State<PlayOneShotAnimation> {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [
           SizedBox(
-            width: screenSize.width,
-            height: screenSize.height,
+            width: 100.0.w,
+            height: 100.0.h,
             child: _riveArtboard == null
                 ? const CircularProgressIndicator()
                 : Rive(artboard: _riveArtboard!),
